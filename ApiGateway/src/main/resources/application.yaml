@@ -1,0 +1,26 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user/**
+            - Method=GET,POST,PUT,DELETE
+
+
+        - id: PURCHASE-SERVICE
+          uri: lb://PURCHASE-SERVICE
+          predicates:
+            - Path=/purchase/**
+            - Method=GET,POST,PUT,DELETE
+
+        - id: BOOK-SERVICE
+          uri: http://localhost:8000
+          predicates:
+            - Path=/api/**
+            - Method=GET,POST,PUT,DELETE
