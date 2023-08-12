@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    name: book_microservices
+    url: jdbc:mysql://localhost:3306/book_microservices
+    username: root
+    password: root123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  application:
+    name: USER-SERVICE
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
